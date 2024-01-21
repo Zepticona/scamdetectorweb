@@ -155,7 +155,7 @@ const Dashboad =  () => {
                                 {record?.scammerNumber}
                                 </td>
                                 <td className='px-2 py-1'>
-                                {record?.time}
+                                {record?.time?.toDate().toDateString()}
                                 </td>
                             </tr>
                                 )
