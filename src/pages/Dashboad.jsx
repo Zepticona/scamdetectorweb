@@ -81,57 +81,23 @@ const Dashboad =  () => {
         <div
             className='md:w-1/2 md:mx-auto'
         >
-            {/* <div
-                className='m-2 p-4 flex flex-col items-center space-y-4 bg-white rounded-md'
-            >
-                <img
-                    src={userImage}
-                    className='w-[150px] p-1 ring-2 rounded-full'
-                />
-                <div
-                    className='space-y-1'
+            <button
+            onClick={() => removeUser()}
+            className='px-2 py-1 text-sm border rounded bg-red-500 text-white'
                 >
-                    <p
-                        className='pb-2 text-xl font-semibold'
-                    >
-                        {user?.name}
-                    </p>
-                    <p
-                        className='text-sm text-gray-500'
-                    >
-                        {user?.email}
-                    </p>
-                    <p
-                        className='text-sm text-gray-500'
-                    >
-                        {user?.phone}
-                    </p>
-                    <div
-                        className='space-x-2'
-                    >
-                        <button
-                            onClick={() => setView(!view)}
-                            className='px-2 py-1 text-sm border rounded'
-                        >
-                            Update
-                        </button>
-                        <button
-                            onClick={() => removeUser()}
-                            className='px-2 py-1 text-sm border rounded bg-red-500 text-white'
-                        >
-                            Logout
-                        </button>
-                    </div>
-                </div>
-            </div> */}
+                Logout
+            </button>            
             <div
                 className='m-2 p-2 space-y-2 bg-white rounded-md'
             >
                 <h2
                     className='pb-2 text-xl border-b'
                 >
-                    Completed reports :
+                    Scam Attempts
                 </h2>
+                <p>
+                    The following are the possible scams that may have happened to your safe contact. Please contact with them ASAP and inform the police if necessary.
+                </p>
                 <div
                     className='overflow-x-auto'
                 >
@@ -145,6 +111,11 @@ const Dashboad =  () => {
                                 <td
                                     className='px-2 py-1'
                                 >
+                                    #
+                                </td>
+                                <td
+                                    className='px-2 py-1'
+                                >
                                     Transcription
                                 </td>
                                 <td
@@ -152,21 +123,39 @@ const Dashboad =  () => {
                                 >
                                     Verdict
                                 </td>
-                                
+                                <td
+                                    className='px-2 py-1'
+                                >
+                                    Scammer Phone
+                                </td>
+                                <td
+                                    className='px-2 py-1'
+                                >
+                                    Time
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
                             {records &&
-                                records.map(record=>
+                                records.map((record, i)=>
                                     <tr
                                     key={record?.id}
                                 className='text-gray-500 text-sm border-b cursor-pointer'
                             >
                                 <td className='px-2 py-1'>
+                                {i+1}
+                                </td>
+                                <td className='px-2 py-1'>
                                 {record?.Transcription}
                                 </td>
                                 <td className='px-2 py-1'>
                                 {record?.Verdict}
+                                </td>
+                                <td className='px-2 py-1'>
+                                {record?.scammerNumber}
+                                </td>
+                                <td className='px-2 py-1'>
+                                {record?.time}
                                 </td>
                             </tr>
                                 )
